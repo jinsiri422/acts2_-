@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acts2부 또래모임</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 전체 페이지 스타일 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        /* 메인 콘텐츠 컨테이너 */
+        .container {
+            width: 100%;
+            max-width: 480px; /* 모바일 화면에 적합한 최대 너비 */
+            margin: 0 auto; /* 화면 중앙 정렬 */
+            background-color: #ffffff;
+            padding: 30px 20px;
+            min-height: 100vh;
+            text-align: center; /* 내부 요소들(제목 포함)을 가운데 정렬 */
+        }
+        
+        /* 제목 영역 */
+        .header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            word-break: keep-all; 
+        }
+        
+        /* 이미지가 표시될 공간 */
+        #main-image {
+            width: 100%; /* 너비를 꽉 채움 */
+            border-radius: 12px;
+            cursor: pointer; /* 클릭 가능한 커서 모양 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            user-select: none; /* 이미지 드래그 방지 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Acts2부 또래모임</h1>
+        </div>
+        
+        <img id="main-image" src="" alt="또래모임 이미지" />
+    </div>
+    
+    <script>
+        // --- 여기에 'images' 폴더에 있는 이미지 파일명 9개를 순서대로 넣으세요 ---
+        const imageUrls = [
+            "images/1.png",    // 1번째 이미지
+            "images/2.png",    // 2번째 이미지
+            "images/3.png",    // 3번째 이미지
+            "images/4.png",    // 4번째 이미지
+            "images/5.png",    // 5번째 이미지
+            "images/6.png",    // 6번째 이미지
+            "images/7.png",    // 7번째 이미지
+            "images/8.png",    // 8번째 이미지
+            "images/9.png"     // 9번째 이미지
+        ];
+        // --------------------------------------------------------------------
+
+        const mainImage = document.getElementById('main-image');
+        let currentImageIndex = 0;
+
+        // 페이지가 처음 열릴 때 첫 번째 이미지를 화면에 표시
+        if (imageUrls.length > 0) {
+            mainImage.src = imageUrls[currentImageIndex];
+        }
+
+        // 이미지를 클릭할 때마다 실행
+        mainImage.addEventListener('click', function() {
+            if (imageUrls.length > 0) {
+                // 다음 이미지 순서로 변경 (마지막 이미지면 처음으로 돌아감)
+                currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+                
+                // 이미지의 주소를 다음 이미지 주소로 변경
+                mainImage.src = imageUrls[currentImageIndex];
+            }
+        });
+    </script>
+
+</body>
+</html>
